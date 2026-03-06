@@ -102,6 +102,7 @@ Si vous avez des problèmes :
 3. Allez dans les logs Vercel pour voir les erreurs
 
 ## 📝 Notes
+# Deployed with Vercel
 
 - Les emails sont envoyés via Gmail
 - Vous recevez une notification pour chaque soumission
