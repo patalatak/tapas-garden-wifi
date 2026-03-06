@@ -1,0 +1,392 @@
+<!-- ============================================================================
+     COPY AND PASTE THIS CODE IN THE "WIFI" PAGE OF YOUR BUILDER (ENGLISH VERSION)
+     CONFIGURED FOR VERCEL
+     
+     Replace YOUR_VERCEL_URL with your actual Vercel deployment URL
+     Example: https://tapas-garden-wifi.vercel.app
+     ============================================================================ -->
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .tapas-wifi-container {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .tapas-wifi-box {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .tapas-wifi-header {
+        background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+        padding: 40px 20px;
+        text-align: center;
+        color: white;
+    }
+
+    .tapas-wifi-logo {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .tapas-wifi-header h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .tapas-wifi-header p {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    .tapas-wifi-content {
+        padding: 40px 30px;
+    }
+
+    .tapas-wifi-welcome {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .tapas-wifi-welcome h2 {
+        font-size: 22px;
+        color: #1a1a1a;
+        margin-bottom: 10px;
+    }
+
+    .tapas-wifi-welcome p {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .tapas-wifi-info-box {
+        background: #f5f5f5;
+        border-left: 4px solid #DC143C;
+        padding: 12px 15px;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 25px;
+    }
+
+    .tapas-wifi-info-box strong {
+        color: #333;
+    }
+
+    .tapas-wifi-form-group {
+        margin-bottom: 20px;
+    }
+
+    .tapas-wifi-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .tapas-wifi-required {
+        color: #DC143C;
+        font-weight: bold;
+    }
+
+    .tapas-wifi-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: inherit;
+        transition: border-color 0.3s;
+    }
+
+    .tapas-wifi-input:focus {
+        outline: none;
+        border-color: #DC143C;
+        box-shadow: 0 0 0 3px rgba(220, 20, 60, 0.1);
+    }
+
+    .tapas-wifi-button {
+        width: 100%;
+        padding: 14px 20px;
+        background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        margin-top: 10px;
+    }
+
+    .tapas-wifi-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(220, 20, 60, 0.3);
+    }
+
+    .tapas-wifi-button:active {
+        transform: translateY(0);
+    }
+
+    .tapas-wifi-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .tapas-wifi-terms {
+        font-size: 12px;
+        color: #999;
+        margin-top: 15px;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+    .tapas-wifi-terms a {
+        color: #DC143C;
+        text-decoration: none;
+    }
+
+    .tapas-wifi-terms a:hover {
+        text-decoration: underline;
+    }
+
+    .tapas-wifi-footer {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .tapas-wifi-footer a {
+        color: #DC143C;
+        text-decoration: none;
+    }
+
+    .tapas-wifi-footer a:hover {
+        text-decoration: underline;
+    }
+
+    .tapas-wifi-success {
+        display: none;
+        background: #d4edda;
+        border: 2px solid #28a745;
+        color: #155724;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .tapas-wifi-error {
+        display: none;
+        background: #f8d7da;
+        border: 2px solid #f5c6cb;
+        color: #721c24;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .tapas-wifi-loading {
+        display: none;
+        text-align: center;
+        color: #999;
+        margin-top: 10px;
+    }
+
+    @media (max-width: 480px) {
+        .tapas-wifi-content {
+            padding: 30px 20px;
+        }
+
+        .tapas-wifi-header h1 {
+            font-size: 24px;
+        }
+
+        .tapas-wifi-welcome h2 {
+            font-size: 18px;
+        }
+
+        .tapas-wifi-button {
+            padding: 12px 15px;
+            font-size: 15px;
+        }
+    }
+</style>
+
+<div class="tapas-wifi-container">
+    <div class="tapas-wifi-box">
+        <div class="tapas-wifi-header">
+            <div class="tapas-wifi-logo">🍽️</div>
+            <h1>Free WiFi</h1>
+            <p>1 hour of free internet access</p>
+        </div>
+
+        <div class="tapas-wifi-content">
+            <div class="tapas-wifi-success" id="successMessage">
+                ✓ Thank you! Your WiFi code will be sent to your email shortly.
+            </div>
+
+            <div class="tapas-wifi-error" id="errorMessage">
+                ✗ An error occurred. Please try again.
+            </div>
+
+            <div class="tapas-wifi-welcome">
+                <h2>Connect for free</h2>
+                <p>Enter your email address to get 1 hour of free WiFi access.</p>
+            </div>
+
+            <div class="tapas-wifi-info-box">
+                <strong>⏱️ 1 hour free</strong><br>
+                No commitment, no personal data required beyond your email.
+            </div>
+
+            <form id="tapasWifiForm">
+                <div class="tapas-wifi-form-group">
+                    <label for="tapasWifiEmail" class="tapas-wifi-label">
+                        Email Address <span class="tapas-wifi-required">*</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="tapasWifiEmail" 
+                        name="email" 
+                        class="tapas-wifi-input"
+                        placeholder="your.email@example.com"
+                        required
+                        autocomplete="email"
+                    >
+                </div>
+
+                <div class="tapas-wifi-form-group">
+                    <label for="tapasWifiName" class="tapas-wifi-label">
+                        Name (optional)
+                    </label>
+                    <input 
+                        type="text" 
+                        id="tapasWifiName" 
+                        name="name" 
+                        class="tapas-wifi-input"
+                        placeholder="Your name"
+                        autocomplete="name"
+                    >
+                </div>
+
+                <button type="submit" class="tapas-wifi-button" id="submitBtn">
+                    Get 1 Hour Free
+                </button>
+
+                <div class="tapas-wifi-loading" id="loadingMsg">
+                    Submitting...
+                </div>
+
+                <div class="tapas-wifi-terms">
+                    By submitting this form, you agree to receive a WiFi code by email.<br>
+                    <a href="https://tapas-garden.com/contact">Terms of Service</a>
+                </div>
+            </form>
+
+            <div class="tapas-wifi-footer">
+                <p>Need help? <a href="mailto:contact@tapasgarden.com">Contact us</a></p>
+                <p style="margin-top: 10px;">© 2025 Tapas Garden • Koh Samui, Thailand</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get Omada parameters from URL (if present)
+    const urlParams = new URLSearchParams(window.location.search);
+    const macAddress = urlParams.get('mac');
+    const clientIp = urlParams.get('ip');
+    const sessionId = urlParams.get('id');
+
+    const form = document.getElementById('tapasWifiForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMessage');
+    const errorMsg = document.getElementById('errorMessage');
+    const loadingMsg = document.getElementById('loadingMsg');
+
+    // Replace YOUR_VERCEL_URL with your actual Vercel URL
+    const VERCEL_URL = 'https://YOUR_VERCEL_URL/api/wifi';
+
+    // Handle form submission
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Get form data
+        const email = document.getElementById('tapasWifiEmail').value;
+        const name = document.getElementById('tapasWifiName').value;
+
+        // Hide messages
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        loadingMsg.style.display = 'block';
+        submitBtn.disabled = true;
+
+        try {
+            // Prepare data
+            const data = {
+                email: email,
+                name: name,
+                mac_address: macAddress || '',
+                client_ip: clientIp || '',
+                session_id: sessionId || ''
+            };
+
+            // Send to Vercel
+            const response = await fetch(VERCEL_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            loadingMsg.style.display = 'none';
+
+            if (response.ok) {
+                successMsg.style.display = 'block';
+                form.reset();
+                document.getElementById('tapasWifiEmail').focus();
+            } else {
+                errorMsg.textContent = '✗ An error occurred. Please try again.';
+                errorMsg.style.display = 'block';
+            }
+        } catch (error) {
+            loadingMsg.style.display = 'none';
+            errorMsg.textContent = '✗ Network error. Please check your connection.';
+            errorMsg.style.display = 'block';
+            console.error('Error:', error);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+
+    // Focus on email
+    document.getElementById('tapasWifiEmail').focus();
+</script>
+
+<!-- ============================================================================
+     END OF CODE TO COPY
+     ============================================================================ -->

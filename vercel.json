@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "functions": {
+    "api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "buildCommand": "npm install",
+  "outputDirectory": ".",
+  "env": [
+    "EMAIL_USER",
+    "EMAIL_PASSWORD"
+  ]
+}
